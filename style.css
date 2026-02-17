@@ -14,15 +14,15 @@ body {
 
 /* --- LOGO --- */
 .logo {
-    height: 80px; 
+    height: 180px; /* AUMENTADO DE 80px PARA 140px */
     width: auto;  
     object-fit: contain;
     transition: height 0.4s ease;
+    margin-top: 10px; 
 }
 
-/* --- CABEÇALHO --- */
 .cabecalho {
-    height: 100px;
+    height: 120px; /* AUMENTADO DE 100px PARA 120px para dar mais espaço */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -35,6 +35,7 @@ body {
     width: 100%;
     z-index: 1000; 
     transition: background-color 0.4s ease, height 0.4s ease, padding 0.4s ease;
+    overflow: visible;
 }
 
 /* --- MENU DESKTOP (CORRIGIDO: Volta a ser horizontal) --- */
@@ -43,7 +44,6 @@ body {
     display: flex;
     gap: 30px;
     align-items: center;
-    /* Removemos as regras mobile daqui */
 }
 
 .menu a {
@@ -705,21 +705,27 @@ footer {
         background-color: transparent; 
         transition: background-color 0.4s ease;
     }
-
-    .logo {
-        height: 40px !important;
+    .cabecalho {
+        height: 90px !important; /* AUMENTADO DE 70px PARA 90px */
+        padding: 0 20px !important;
+        background-color: transparent; 
+        transition: background-color 0.4s ease;
     }
 
-    /* Menu Mobile */
+    /* Logo Mobile bem maior */
+    .logo {
+        height: 120px !important; /* AUMENTADO DE 40px PARA 80px */
+    }
+
     .menu-icon {
         display: flex; 
-        z-index: 1001; /* Garante que fique acima do menu aberto */
+        z-index: 1001; 
     }
 
-    /* O Container do Menu que abre */
+    /* Ajuste da posição do menu quando abre */
     .nav-menu {
         position: absolute;
-        top: 70px;
+        top: 90px; /* ALTERADO DE 70px PARA 90px (para acompanhar o cabeçalho) */
         left: 0;
         width: 100%;
         background-color: rgba(0, 0, 0, 0.95);

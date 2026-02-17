@@ -14,17 +14,30 @@ document.addEventListener('DOMContentLoaded', function() {
     const fechar = document.querySelector('.fechar');
     
     // --- 1. LÓGICA DO CABEÇALHO (Scroll e Cor) ---
+// --- 1. LÓGICA DO CABEÇALHO (Scroll e Cor) ---
     function atualizarHeader() {
         const menuAberto = navMenu && navMenu.classList.contains('ativo');
 
+        // Se rolou a página OU o menu está aberto
         if (window.scrollY > 50 || menuAberto) {
+            // --- ESTADO COMPACTO (DESCENDO) ---
             header.style.backgroundColor = 'rgba(0, 0, 0, 0.95)';
-            header.style.height = '70px';
-            if(logo) logo.style.height = '50px';
+            header.style.height = '100px'; // Aumentado de 70 para 100
+            
+            if(logo) {
+                logo.style.height = '90px'; // Aumentado de 50 para 90 para não cortar
+                logo.style.marginTop = '0px'; // Ajuste fino para alinhar
+            }
+
         } else {
+            // --- ESTADO ORIGINAL (TOPO) ---
             header.style.backgroundColor = 'transparent';
-            header.style.height = '100px';
-            if(logo) logo.style.height = '80px';
+            header.style.height = '120px'; // Tamanho grande original
+            
+            if(logo) {
+                logo.style.height = '140px'; // Tamanho grande original
+                logo.style.marginTop = '10px'; // O efeito de "vazar" um pouco
+            }
         }
     }
 
