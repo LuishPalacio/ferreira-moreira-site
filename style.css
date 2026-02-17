@@ -1,0 +1,873 @@
+/* --- RESET BÁSICO --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: #333;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* --- LOGO --- */
+.logo {
+    height: 80px; 
+    width: auto;  
+    object-fit: contain;
+    transition: height 0.4s ease;
+}
+
+/* --- CABEÇALHO --- */
+.cabecalho {
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+    background-color: rgba(0, 0, 0, 0.0); 
+    color: white;
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; 
+    transition: background-color 0.4s ease, height 0.4s ease, padding 0.4s ease;
+}
+
+/* --- MENU DESKTOP (CORRIGIDO: Volta a ser horizontal) --- */
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    /* Removemos as regras mobile daqui */
+}
+
+.menu a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: 0.3s;
+    text-shadow: 0px 1px 3px rgba(0,0,0,0.5);
+}
+
+.menu a:hover {
+    color: #ff9900;
+}
+
+.btn-contato {
+    border: 1px solid #fff;
+    padding: 8px 20px;
+    border-radius: 0px;
+}
+
+.btn-contato:hover {
+    background-color: #fff;
+    color: #1a1a1a !important;
+}
+
+/* --- ÍCONE DO MENU MOBILE --- */
+.menu-icon {
+    display: none; /* Invisível no Desktop */
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.bar {
+    width: 30px;
+    height: 3px;
+    background-color: white;
+    transition: 0.3s;
+}
+
+/* --- HERO SECTION --- */
+.hero {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 5%;
+}
+
+/* Slideshow */
+.slideshow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: #000;
+}
+
+.slideshow::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.9) 0%, rgba(0,0,0,0.1) 100%);
+    z-index: 2;
+}
+
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    animation: fadeSlideshow 20s infinite; 
+}
+
+.slide1 { background-image: url('img/banner1.jpeg'); animation-delay: 0s; }
+.slide2 { background-image: url('img/banner2.jpeg'); animation-delay: 5s; }
+.slide3 { background-image: url('img/banner3.jpeg'); animation-delay: 10s; }
+.slide4 { background-image: url('img/banner4.jpeg'); animation-delay: 15s; }
+
+@keyframes fadeSlideshow {
+    0% { opacity: 0; transform: scale(1); }
+    5% { opacity: 1; }
+    25% { opacity: 1; }   
+    30% { opacity: 0; transform: scale(1.05); }  
+    100% { opacity: 0; }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 650px;
+    color: white;
+    text-align: left;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 15px 40px;
+    background-color: #ff9900;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 2px solid #ff9900;
+    transition: 0.3s;
+}
+
+.cta-button:hover {
+    background-color: transparent;
+    color: #ff9900;
+}
+
+/* --- SEÇÕES GERAIS --- */
+.padding-padrao {
+    padding: 80px 5%;
+}
+
+.bg-cinza {
+    background-color: #f4f4f4;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #1a1a1a;
+}
+
+/* --- ESTILO DOS TÍTULOS --- */
+.container-texto {
+    max-width: 800px;
+    margin: 0 auto 50px auto;
+    text-align: center;
+}
+
+.container-texto p {
+    font-size: 1.1rem;
+    color: #666;
+    margin-top: 10px;
+}
+
+/* --- SEÇÃO SOBRE (FUNDO ESCURO) --- */
+#sobre {
+    background-color: #1f1f1f;
+    color: #e0e0e0;
+}
+
+.sobre-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.sobre-texto {
+    flex: 1;
+    text-align: left;
+}
+
+.sobre-texto h2 {
+    text-align: left;
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin-bottom: 25px;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.sobre-texto p {
+    margin-bottom: 20px;
+    font-size: 1.05rem;
+    color: #cccccc;
+    text-align: justify;
+    line-height: 1.8;
+}
+
+.sobre-imagem {
+    flex: 0 0 450px; 
+    max-width: 450px;
+    position: relative;
+}
+
+.sobre-imagem img {
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: 20px 20px 0px rgba(255, 153, 0, 0.9); 
+    object-fit: cover;
+}
+
+/* --- SEÇÃO QUEM LIDERA (FUNDO BRANCO) --- */
+#lideres {
+    background-color: #ffffff;
+    color: #333;
+}
+
+.socios-header h3 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 60px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #1a1a1a;
+    position: relative;
+    display: inline-block;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.socios-header h3::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: #ff9900;
+    margin: 15px auto 0 auto;
+}
+
+.lideres-container {
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    margin-top: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.lider-block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+}
+
+.lider-block:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.lider-imagem {
+    flex: 0 0 350px; 
+    max-width: 350px; 
+}
+
+.lider-imagem img {
+    width: 100%;
+    border-radius: 4px;
+    box-shadow: 15px 15px 0px rgba(255, 153, 0, 0.8); 
+    object-fit: cover;
+    display: block;
+}
+
+.lider-texto {
+    flex: 1;
+    text-align: left;
+}
+
+.lider-texto h3 {
+    font-size: 2rem;
+    margin-bottom: 5px;
+    color: #1a1a1a;
+}
+
+.lider-texto .cargo {
+    display: block;
+    font-weight: 700;
+    color: #ff9900;
+    margin-bottom: 25px;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.lider-texto p {
+    font-size: 1.05rem;
+    color: #555;
+    line-height: 1.7;
+}
+
+/* --- SEÇÃO SERVIÇOS --- */
+.servicos-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.servico-card {
+    flex: 1 1 300px;
+    max-width: 360px;
+    background: #fafafa;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+    padding: 40px 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    border-bottom: 3px solid transparent;
+    border: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.servico-card:hover {
+    background-color: #ffffff;
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    border-color: #ff9900;
+}
+
+.icon-box {
+    font-size: 2.5rem;
+    color: #ff9900;
+    margin-bottom: 20px;
+    background: rgba(255, 153, 0, 0.1);
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.servico-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 15px;
+    color: #1a1a1a;
+    font-weight: 700;
+}
+
+.servico-card p {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.lista-servicos {
+    list-style: none;
+    width: 100%;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.lista-servicos li {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.lista-servicos li i {
+    color: #ff9900;
+    font-size: 0.8rem;
+}
+
+/* --- GALERIA ROLETA INFINITA --- */
+.roleta-wrapper {
+    overflow: hidden;
+    padding-top: 20px; 
+    padding-bottom: 50px; 
+    background-color: #f9f9f9;
+}
+
+.titulo-galeria {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.galeria-container.roleta-track {
+    display: flex;
+    gap: 20px; 
+    width: max-content;
+    animation: roletaScroll 40s linear infinite;
+    will-change: transform;
+}
+
+.galeria-container.roleta-track:hover {
+    animation-play-state: paused;
+}
+
+.foto-item {
+    position: relative;
+    flex: 0 0 350px; 
+    height: 350px;
+    overflow: hidden;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+}
+
+.foto-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.foto-item:hover {
+    transform: translateY(-10px); 
+    z-index: 10; 
+}
+
+.foto-item:hover img {
+    transform: scale(1.1);
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    padding: 20px;
+}
+
+.foto-item:hover .overlay {
+    opacity: 1;
+}
+
+.overlay h3 {
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1.5;
+    display: inline-block;
+    border-bottom: 3px solid #ff9900;
+    padding-bottom: 10px;
+    margin: 0;
+}
+
+@keyframes roletaScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-3700px); }
+}
+
+/* --- LIGHTBOX (JANELA DE ZOOM) --- */
+.lightbox {
+    display: none; 
+    position: fixed;
+    z-index: 99999;
+    padding-top: 50px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(5px);
+    
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.lightbox.ativo {
+    display: flex !important;
+}
+
+.lightbox-img {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 85vh;
+    border: 2px solid #333;
+    box-shadow: 0 0 50px rgba(0,0,0,0.5);
+    animation: zoomIn 0.3s;
+}
+
+@keyframes zoomIn {
+    from {transform:scale(0.9); opacity:0} 
+    to {transform:scale(1); opacity:1}
+}
+
+.fechar {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.fechar:hover {
+    color: #ff9900;
+}
+
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    font-size: 1.2rem;
+    font-weight: 300;
+}
+
+/* --- RODAPÉ PROFISSIONAL --- */
+footer {
+    background-color: #1a1a1a;
+    color: #b0b0b0;
+    padding-top: 60px;
+    font-size: 0.95rem;
+    width: 100%; 
+    position: relative; 
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+    display: grid;
+    /* 3 Colunas fixas no desktop */
+    grid-template-columns: 2fr 1fr 1fr; 
+    gap: 40px;
+    margin-bottom: 50px;
+}
+
+.footer-col h3 {
+    color: white;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+}
+
+.footer-col h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 30px;
+    height: 3px;
+    background-color: #ff9900;
+}
+
+.footer-col p {
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.footer-links, .footer-contato {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #b0b0b0;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-links a:hover {
+    color: #ff9900;
+    padding-left: 5px;
+}
+
+.footer-contato li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.footer-contato i {
+    color: #ff9900;
+}
+
+.footer-social {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.footer-social a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: #333;
+    color: white;
+    border-radius: 50%;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-social a:hover {
+    background: #ff9900;
+    transform: translateY(-3px);
+}
+
+.footer-bottom {
+    background-color: #111;
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid #333;
+}
+
+.footer-bottom p {
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+/* --- RESPONSIVIDADE GERAL --- */
+@media (max-width: 768px) {
+    
+    /* Cabeçalho */
+    .cabecalho {
+        height: 70px !important;
+        padding: 0 20px !important;
+        background-color: transparent; 
+        transition: background-color 0.4s ease;
+    }
+
+    .logo {
+        height: 40px !important;
+    }
+
+    /* Menu Mobile */
+    .menu-icon {
+        display: flex; 
+        z-index: 1001; /* Garante que fique acima do menu aberto */
+    }
+
+    /* O Container do Menu que abre */
+    .nav-menu {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.95);
+        height: 0; 
+        overflow: hidden;
+        transition: 0.5s ease;
+    }
+
+    .nav-menu.ativo {
+        height: 280px; 
+    }
+
+    /* CONFIGURAÇÃO DO MENU (AQUI SIM FICA VERTICAL E À DIREITA) */
+    .menu {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end; /* Tudo para a direita */
+        height: 100%;
+        width: 100%;
+        padding-right: 40px; /* Margem da borda */
+        gap: 25px;
+    }
+
+    .menu li {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .menu a {
+        text-align: right;
+    }
+
+    /* Hero */
+    .hero {
+        padding-left: 0;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .hero-content {
+        padding: 0 20px;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    /* Serviços */
+    .padding-padrao {
+        padding: 50px 5%;
+    }
+
+    .servicos-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .servico-card {
+        width: 100%;
+        max-width: 400px;
+    }
+
+    /* História (Sobre) */
+    .sobre-wrapper {
+        flex-direction: column-reverse;
+        gap: 30px;
+    }
+
+    .sobre-texto h2 {
+        font-size: 1.8rem;
+        text-align: center;
+    }
+    
+    .sobre-texto p {
+        text-align: left;
+    }
+
+    .sobre-imagem {
+        max-width: 100%;
+        flex: 1; 
+    }
+
+    .sobre-imagem img {
+        box-shadow: 10px 10px 0px #ff9900;
+    }
+
+    /* Líderes */
+    .lideres-container {
+        gap: 50px;
+    }
+
+    .lider-block {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .lider-block:nth-child(even) {
+        flex-direction: column; 
+    }
+    
+    .lider-imagem {
+        max-width: 100%;
+        flex: 1;
+    }
+    
+    .lider-imagem img {
+         box-shadow: 10px 10px 0px rgba(255, 153, 0, 0.8);
+    }
+
+    .lider-texto {
+        text-align: center;
+    }
+
+    /* Galeria Roleta Mobile */
+    .foto-item {
+        flex: 0 0 280px; 
+        height: 280px;
+    }
+
+    .galeria-container.roleta-track {
+        animation-name: roletaScrollMobile;
+    }
+
+    /* Rodapé Mobile */
+    .footer-container {
+        grid-template-columns: 1fr; /* Vira 1 Coluna */
+        gap: 40px;
+        text-align: center;
+    }
+
+    .footer-col h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .footer-contato li {
+        justify-content: center;
+    }
+
+    .footer-social {
+        justify-content: center;
+    }
+}
+
+@keyframes roletaScrollMobile {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-3000px); }
+}
