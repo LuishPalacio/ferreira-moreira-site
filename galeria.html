@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Projetos e Clientes | Ferreira & Moreira</title>
+</head>
+<body>
+    
+    <header class="cabecalho cabecalho-interno">
+        <a href="index.html">
+            <img src="img/logo.png" alt="Ferreira & Moreira" class="logo">
+        </a>
+        
+        <div class="menu-icon">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+
+        <nav class="nav-menu">
+            <ul class="menu">
+                <li><a href="index.html#home">Início</a></li>
+                <li><a href="index.html#sobre">Quem Somos</a></li>
+                <li><a href="index.html#servicos">Serviços</a></li>
+                <li><a href="index.html#projetos">Projetos</a></li> 
+                <li><a href="galeria.html">Galeria</a></li>
+                <li><a href="https://wa.me/551125007422" target="_blank" class="btn-contato">Fale Conosco</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="pagina-galeria padding-padrao">
+        
+        <div class="cabecalho-galeria">
+            <h1>Nossos Clientes</h1>
+            <p>Explore os detalhes de cada projeto concluído pela nossa equipe de Arquitetura e Engenharia.</p>
+        </div>
+
+        <div class="container-clientes">
+            
+            <section class="bloco-cliente">
+                <div class="info-cliente">
+                    <div class="texto-cliente">
+                        <h2>Residência Família Silva</h2>
+                        <span class="meta-dados">Projeto Arquitetônico e Gestão de Obra | Santa Isabel - SP</span>
+                    </div>
+                </div>
+                
+                <div class="mosaico-album">
+                    <div class="foto-destaque">
+                        <img src="img/foto1.jpeg" alt="Fachada Principal">
+                    </div>
+
+                    <div class="fotos-secundarias">
+                        <img src="img/foto2.jpeg" alt="Sala de Estar">
+                        
+                        <div class="foto-mais">
+                            <img src="img/foto3.jpeg" alt="Cozinha Planejada">
+                            <div class="overlay-mais">+5 Fotos</div> 
+                        </div>
+                    </div>
+
+                    <img src="img/foto4.jpeg" class="foto-oculta" alt="Área Gourmet">
+                    <img src="img/foto5.jpeg" class="foto-oculta" alt="Banheiro Suíte">
+                    <img src="img/foto6.jpeg" class="foto-oculta" alt="Quarto Casal">
+                    <img src="img/foto7.jpeg" class="foto-oculta" alt="Jardim de Inverno">
+                    <img src="img/foto8.jpeg" class="foto-oculta" alt="Piscina">
+                </div>
+            </section>
+
+            <section class="bloco-cliente">
+                <div class="info-cliente">
+                    <div class="texto-cliente">
+                        <h2>Edifício Comercial Central</h2>
+                        <span class="meta-dados">Projeto Estrutural e Regularização | Arujá - SP</span>
+                    </div>
+                </div>
+                
+                <div class="mosaico-album">
+                    <div class="foto-destaque">
+                        <img src="img/foto5.jpeg" alt="Recepção">
+                    </div>
+
+                    <div class="fotos-secundarias">
+                        <img src="img/foto6.jpeg" alt="Salas de Reunião">
+                        
+                        <div class="foto-mais">
+                            <img src="img/foto7.jpeg" alt="Fachada de Vidro">
+                            <div class="overlay-mais">+3 Fotos</div>
+                        </div>
+                    </div>
+
+                    <img src="img/foto8.jpeg" class="foto-oculta" alt="Corredores">
+                    <img src="img/foto9.jpeg" class="foto-oculta" alt="Estacionamento">
+                    <img src="img/foto10.jpeg" class="foto-oculta" alt="Cobertura">
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <div id="lightbox" class="lightbox">
+        <span class="fechar">&times;</span>
+
+        <div class="lightbox-content">
+            <button class="seta prev" id="prev-btn">&#10094;</button>
+            <img class="lightbox-img" id="lightbox-img" src="" alt="Visualização ampliada">
+            <button class="seta next" id="next-btn">&#10095;</button>
+        </div>
+
+        <div class="lightbox-footer">
+            <div id="caption"></div>
+            <div id="counter"></div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            
+            <div class="footer-col sobre">
+                <h3>Ferreira & Moreira</h3>
+                <p class="cnpj">CNPJ: 46.701.080/0001-03</p>
+                <div class="endereco-box">
+                    <i class="fa-solid fa-location-dot" style="margin-left: -20px;"></i> 
+                    <span style="margin-left: -3px;">Praça da Bandeira 25 - CESI, 2° Andar, Sala 211 - Centro - Santa Isabel - SP</span>
+                </div>
+            </div>
+
+            <div class="footer-col links">
+                <h3>Links Rápidos</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html#home">Início</a></li>
+                    <li><a href="index.html#sobre">Quem Somos</a></li>
+                    <li><a href="index.html#servicos">Soluções</a></li>
+                    <li><a href="galeria.html">Portfólio</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col contato">
+                <h3>Fale Conosco</h3>
+                <ul class="footer-contato">
+                    <li>
+                        <i class="fa-brands fa-whatsapp"></i> 
+                        <span>(11) 2500-7422</span>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-envelope"></i> 
+                        <span>contato@fmarqeng.com.br</span>
+                    </li>
+                </ul>
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/fmarqeng/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/company/ferreira-moreira/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Ferreira & Moreira Ltda. Construindo histórias sólidas.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
