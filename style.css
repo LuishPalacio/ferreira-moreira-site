@@ -177,7 +177,7 @@ body {
     max-width: 100%; 
     width: 700px;
     height: auto;
-    margin: 50px 0 -90px 0px;    
+    margin: 20px 0 30px 0;
     object-fit: contain;
 }
 
@@ -1123,7 +1123,7 @@ footer ul {
         width: 100% !important;
         max-width: 550px !important;
         height: auto !important;
-        margin: 50px 0 -50px -5px !important; 
+        margin: 20px 0 30px 0 !important;
     }
 
     .hero p {
