@@ -87,6 +87,124 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
 
+    // ==========================================
+    // 10. MODAL DE PROCESSO (COMO TRABALHAMOS)
+    // ==========================================
+    const modalProcesso = document.getElementById('modal-processo');
+    if (modalProcesso) {
+        const modalTitle = document.getElementById('modal-processo-title');
+        const modalBody = document.getElementById('modal-processo-body');
+        const modalClose = document.querySelector('.modal-processo-close');
+        
+        const conteudoFases = {
+            1: {
+                title: "1. Primeiro contato",
+                html: `
+                    <p>O atendimento inicial é realizado por telefone ou WhatsApp. Nesse momento, entendemos a necessidade do cliente, apresentamos como funciona a visita técnica, explicamos os custos envolvidos e informamos que o valor da visita poderá ser abatido em caso de fechamento do projeto e/ou da obra.</p>
+                `
+            },
+            2: {
+                title: "2. Reunião e visita técnica",
+                html: `
+                    <p>Realizamos uma reunião presencial para conhecer o local, entender os clientes e levantar as informações iniciais do imóvel. Essa etapa inclui:</p>
+                    <ul>
+                        <li>Levantamento técnico in loco;</li>
+                        <li>Análise das necessidades e objetivos do cliente;</li>
+                        <li>Avaliação preliminar do imóvel e do potencial construtivo;</li>
+                        <li>Estudo inicial de layout, funcionalidade e aproveitamento dos espaços;</li>
+                        <li>Orientações técnicas e arquitetônicas preliminares;</li>
+                        <li>Registro fotográfico técnico do local;</li>
+                        <li>Verificação inicial de condicionantes técnicas e legais;</li>
+                        <li>Alinhamento conceitual para desenvolvimento da proposta comercial.</li>
+                    </ul>
+                `
+            },
+            3: {
+                title: "3. Elaboração da proposta comercial",
+                html: `
+                    <p>Com base nas informações levantadas, desenvolvemos o escopo técnico das atividades necessárias, calculamos os serviços envolvidos e estruturamos uma proposta personalizada, clara e compatível com as necessidades do cliente.</p>
+                `
+            },
+            4: {
+                title: "4. Apresentação da proposta",
+                html: `
+                    <p>Realizamos uma reunião para apresentar nosso portfólio, explicar o escopo proposto, esclarecer dúvidas e detalhar os valores de investimento. É o momento de alinhar expectativas, prazos e próximos passos com total transparência.</p>
+                `
+            },
+            5: {
+                title: "5. Contrato de prestação de serviços: projeto",
+                html: `
+                    <p>Após a aprovação da proposta, formalizamos o contrato de prestação de serviços referente ao projeto. O documento define escopo, etapas, prazos, responsabilidades e condições comerciais, garantindo segurança para ambas as partes.</p>
+                `
+            },
+            6: {
+                title: "6. Desenvolvimento dos projetos",
+                html: `
+                    <p>Desenvolvemos o projeto arquitetônico, de interiores e/ou projetos complementares, conforme a necessidade de cada cliente. Essa etapa contempla plantas, cortes, detalhamentos, estudos técnicos e soluções pensadas para unir estética, funcionalidade e viabilidade executiva.</p>
+                `
+            },
+            7: {
+                title: "7. Aprovação do projeto",
+                html: `
+                    <p>O cliente revisa cada detalhe do projeto. Realizamos os ajustes necessários até que a proposta reflita o estilo, as necessidades e os objetivos desejados, reduzindo imprevistos e evitando surpresas durante a execução da obra.</p>
+                `
+            },
+            8: {
+                title: "8. Estudo para orçamento da execução",
+                html: `
+                    <p>Com o projeto aprovado, realizamos uma análise técnica completa para elaboração da proposta de execução. Nessa etapa, desenvolvemos o escopo dos serviços, estimativa de custos, cronograma físico e planejamento inicial da obra.</p>
+                `
+            },
+            9: {
+                title: "9. Apresentação da proposta de execução",
+                html: `
+                    <p>Apresentamos a proposta comercial para execução da obra, incluindo escopo, etapas, valores de investimento e prazos previstos. Também demonstramos nosso portfólio de execução, reforçando a qualidade técnica e o padrão de acabamento da Ferreira Moreira & Associados.</p>
+                `
+            },
+            10: {
+                title: "10. Contrato de prestação de serviços: execução",
+                html: `
+                    <p>Após aprovação da proposta de execução, formalizamos o contrato da obra. O documento detalha os serviços contratados, responsabilidades, prazos, condições de pagamento, garantias e diretrizes técnicas, trazendo segurança, organização e previsibilidade para todo o processo.</p>
+                `
+            },
+            11: {
+                title: "11. Execução da obra",
+                html: `
+                    <p>Executamos as atividades contratadas com responsabilidade técnica, planejamento e controle de qualidade. O cliente também pode contratar o gerenciamento e/ou acompanhamento da obra, garantindo controle rigoroso de prazo, custo, qualidade e fornecedores.</p>
+                    <p>Durante essa etapa, o cliente recebe relatórios periódicos e acompanha a evolução de cada fase com clareza e confiança.</p>
+                `
+            },
+            12: {
+                title: "12. Entrega",
+                html: `
+                    <p>A entrega representa a concretização do sonho. Finalizamos a obra com atenção aos detalhes, segurança técnica, acabamento de qualidade e documentação regularizada quando aplicável.</p>
+                    <p><strong>As chaves nas mãos. O projeto realizado. O sonho entregue.</strong></p>
+                `
+            }
+        };
+
+        document.querySelectorAll('.fase-icone').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const fase = btn.getAttribute('data-fase');
+                if (conteudoFases[fase]) {
+                    modalTitle.innerText = conteudoFases[fase].title;
+                    modalBody.innerHTML = conteudoFases[fase].html;
+                    modalProcesso.classList.add('ativo');
+                }
+            });
+        });
+
+        if (modalClose) {
+            modalClose.addEventListener('click', () => modalProcesso.classList.remove('ativo'));
+        }
+
+        modalProcesso.addEventListener('click', (e) => {
+            if (e.target === modalProcesso) {
+                modalProcesso.classList.remove('ativo');
+            }
+        });
+    }
+
         // --- 2.2 ABRIR LIGHTBOX DOS ÁLBUNS/LIVROS (Página de Galeria) ---
         const albunsDeLivro = document.querySelectorAll('.livro-container');
         
@@ -459,6 +577,111 @@ document.addEventListener('DOMContentLoaded', function() {
         depToggleBtn.addEventListener('click', () => {
             const aberto = depConteudo.classList.toggle('aberto');
             depToggleBtn.setAttribute('aria-expanded', aberto);
+        });
+    }
+
+    // ==========================================
+    // 11. MODAL DE ORÇAMENTO
+    // ==========================================
+    const btnOrcamento = document.getElementById('btn-orcamento');
+    const modalOrcamento = document.getElementById('modal-orcamento');
+    
+    if (btnOrcamento && modalOrcamento) {
+        const modalCloseOrcamento = modalOrcamento.querySelector('.modal-orcamento-close');
+        const formOrcamento = document.getElementById('form-orcamento');
+        const radiosNecessidade = document.getElementsByName('necessidade');
+        const inputOutros = document.getElementById('orc-outros-especifique');
+        const inputTelefone = document.getElementById('orc-telefone');
+        const inputCep = document.getElementById('orc-cep');
+
+        if (inputTelefone) {
+            inputTelefone.addEventListener('input', function (e) {
+                let x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
+                e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+            });
+        }
+
+        if (inputCep) {
+            inputCep.addEventListener('input', function (e) {
+                let rawValue = e.target.value.replace(/\D/g, ''); 
+                let formattedValue = rawValue;
+                
+                if (rawValue.length > 5) {
+                    formattedValue = rawValue.replace(/^(\d{5})(\d)/, '$1-$2');
+                }
+                e.target.value = formattedValue;
+
+                // Quando atingir os 8 números do CEP, faz a busca
+                if (rawValue.length === 8) {
+                    fetch(`https://viacep.com.br/ws/${rawValue}/json/`)
+                        .then(res => res.json())
+                        .then(data => {
+                            if (!data.erro) {
+                                document.getElementById('orc-rua').value = data.logradouro || '';
+                                const inputBairro = document.getElementById('orc-bairro');
+                                if (inputBairro) inputBairro.value = data.bairro || '';
+                                document.getElementById('orc-cidade').value = data.localidade || '';
+                                document.getElementById('orc-estado').value = data.uf || '';
+                                document.getElementById('orc-pais').value = 'Brasil';
+                                
+                                // Move o foco para o campo "Rua" para o usuário digitar o número da casa
+                                document.getElementById('orc-rua').focus();
+                            }
+                        })
+                        .catch(err => console.error("Erro ao buscar CEP:", err));
+                }
+            });
+        }
+
+        btnOrcamento.addEventListener('click', (e) => {
+            e.preventDefault();
+            modalOrcamento.classList.add('ativo');
+        });
+
+        modalCloseOrcamento.addEventListener('click', () => {
+            modalOrcamento.classList.remove('ativo');
+        });
+
+        modalOrcamento.addEventListener('click', (e) => {
+            if (e.target === modalOrcamento) {
+                modalOrcamento.classList.remove('ativo');
+            }
+        });
+
+        radiosNecessidade.forEach(radio => {
+            radio.addEventListener('change', () => {
+                if (radio.value === 'Outros') {
+                    inputOutros.style.display = 'block';
+                    inputOutros.required = true;
+                } else {
+                    inputOutros.style.display = 'none';
+                    inputOutros.required = false;
+                    inputOutros.value = '';
+                }
+            });
+        });
+
+        formOrcamento.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const nome = document.getElementById('orc-nome').value;
+            const cep = document.getElementById('orc-cep').value;
+            const pais = document.getElementById('orc-pais').value;
+            const estado = document.getElementById('orc-estado').value;
+            const cidade = document.getElementById('orc-cidade').value;
+            const bairro = document.getElementById('orc-bairro') ? document.getElementById('orc-bairro').value : '';
+            const rua = document.getElementById('orc-rua').value;
+            const email = document.getElementById('orc-email').value;
+            const visita = document.getElementById('orc-visita').value;
+            const telefone = document.getElementById('orc-telefone').value;
+            let necessidadeSelecionada = Array.from(radiosNecessidade).find(r => r.checked)?.value || '';
+            if (necessidadeSelecionada === 'Outros') necessidadeSelecionada = 'Outros: ' + inputOutros.value;
+            
+            const enderecoCompleto = bairro ? `${rua}, ${bairro}, ${cidade} - ${estado}, ${cep}, ${pais}` : `${rua}, ${cidade} - ${estado}, ${cep}, ${pais}`;
+            const msg = `Olá, gostaria de solicitar um orçamento!\n\n*Nome completo:* ${nome}\n*Endereço:* ${enderecoCompleto}\n*E-mail:* ${email}\n*Endereço da visita:* ${visita}\n*Contato telefônico:* ${telefone}\n*Necessidade prévia:* ${necessidadeSelecionada}`;
+            window.open(`https://wa.me/5511991430703?text=${encodeURIComponent(msg)}`, '_blank');
+            modalOrcamento.classList.remove('ativo');
+            formOrcamento.reset();
+            inputOutros.style.display = 'none';
         });
     }
 });

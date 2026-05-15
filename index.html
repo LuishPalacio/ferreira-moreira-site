@@ -88,9 +88,7 @@
 <div class="hero-content">
     <img src="img/logo2.png" alt="Logo Destaque" class="hero-logo-destaque">
 
-    
-
-    <a href="https://wa.me/5511991430703" target="_blank" rel="noopener noreferrer" class="cta-button">Solicitar Orçamento</a>
+    <button id="btn-orcamento" class="cta-button">Solicitar Orçamento</button>
 </div>
         </section>
 
@@ -167,43 +165,32 @@
 </section>
         <section id="processo" class="padding-padrao">
             <div class="container-texto reveal">
-                <h2>Como Trabalhamos</h2>
-                <p>Um processo transparente, do primeiro contato à entrega das chaves.</p>
+                <h2>Do sonho à entrega: conheça o nosso processo</h2>
             </div>
-            <div class="timeline">
-                <div class="timeline-item reveal">
-                    <div class="timeline-icone"><i class="fa-solid fa-comments"></i></div>
-                    <div class="timeline-conteudo">
-                        <h3>01. Briefing</h3>
-                        <p>Ouvimos suas necessidades, estilo de vida, orçamento e sonhos. Quanto mais detalhes, mais preciso e personalizado será o seu projeto.</p>
-                    </div>
-                </div>
-                <div class="timeline-item reveal">
-                    <div class="timeline-icone"><i class="fa-solid fa-pencil-ruler"></i></div>
-                    <div class="timeline-conteudo">
-                        <h3>02. Projeto</h3>
-                        <p>Desenvolvemos o projeto arquitetônico e de engenharia completo, com plantas, cortes, detalhamentos e viabilidade técnica garantida.</p>
-                    </div>
-                </div>
-                <div class="timeline-item reveal">
-                    <div class="timeline-icone"><i class="fa-solid fa-magnifying-glass-check"></i></div>
-                    <div class="timeline-conteudo">
-                        <h3>03. Aprovação</h3>
-                        <p>Você revisa cada detalhe. Fazemos ajustes até que o projeto reflita exatamente o que você imaginou — sem surpresas na obra.</p>
-                    </div>
-                </div>
-                <div class="timeline-item reveal">
-                    <div class="timeline-icone"><i class="fa-solid fa-helmet-safety"></i></div>
-                    <div class="timeline-conteudo">
-                        <h3>04. Execução</h3>
-                        <p>Gerenciamos toda a obra com controle rigoroso de prazo, qualidade e custo. Você recebe relatórios periódicos e acompanha cada etapa.</p>
-                    </div>
-                </div>
-                <div class="timeline-item reveal">
-                    <div class="timeline-icone"><i class="fa-solid fa-key"></i></div>
-                    <div class="timeline-conteudo">
-                        <h3>05. Entrega</h3>
-                        <p>As chaves nas suas mãos. Segurança técnica, acabamento impecável e toda a documentação regularizada. Sonho realizado.</p>
+            
+            <div class="processo-arena reveal">
+                <div class="proc-arco-container">
+                    
+                    <button class="fase-icone fase-1" data-fase="1" aria-label="1. Primeiro contato"><i class="fa-solid fa-phone"></i></button>
+                    <button class="fase-icone fase-2" data-fase="2" aria-label="2. Reunião e visita técnica"><i class="fa-solid fa-handshake"></i></button>
+                    <button class="fase-icone fase-3" data-fase="3" aria-label="3. Elaboração da proposta comercial"><i class="fa-solid fa-file-signature"></i></button>
+                    <button class="fase-icone fase-4" data-fase="4" aria-label="4. Apresentação da proposta"><i class="fa-solid fa-person-chalkboard"></i></button>
+                    <button class="fase-icone fase-5" data-fase="5" aria-label="5. Contrato: projeto"><i class="fa-solid fa-file-contract"></i></button>
+                    <button class="fase-icone fase-6" data-fase="6" aria-label="6. Desenvolvimento dos projetos"><i class="fa-solid fa-pen-ruler"></i></button>
+                    <button class="fase-icone fase-7" data-fase="7" aria-label="7. Aprovação do projeto"><i class="fa-solid fa-thumbs-up"></i></button>
+                    <button class="fase-icone fase-8" data-fase="8" aria-label="8. Estudo para orçamento"><i class="fa-solid fa-calculator"></i></button>
+                    <button class="fase-icone fase-9" data-fase="9" aria-label="9. Apresentação da proposta de execução"><i class="fa-solid fa-file-invoice-dollar"></i></button>
+                    <button class="fase-icone fase-10" data-fase="10" aria-label="10. Contrato: execução"><i class="fa-solid fa-file-signature"></i></button>
+                    <button class="fase-icone fase-11" data-fase="11" aria-label="11. Execução da obra"><i class="fa-solid fa-helmet-safety"></i></button>
+                    <button class="fase-icone fase-12" data-fase="12" aria-label="12. Entrega"><i class="fa-solid fa-key"></i></button>
+
+                    <!-- Janela de informações centralizada no arco -->
+                    <div id="modal-processo" class="janela-processo-centro">
+                        <div class="janela-processo-content">
+                            <span class="modal-processo-close">&times;</span>
+                            <h3 id="modal-processo-title"></h3>
+                            <div id="modal-processo-body"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -510,6 +497,42 @@
                 </div>
             </div>
         </section>
+
+        <!-- Modal Orçamento -->
+        <div id="modal-orcamento" class="modal-processo">
+            <div class="modal-processo-content modal-orcamento-content">
+                <span class="modal-orcamento-close">&times;</span>
+                <h3 id="modal-processo-title">Solicitar Orçamento</h3>
+                <form id="form-orcamento">
+                    <input type="text" id="orc-nome" placeholder="Nome completo" required>
+                    <div class="orc-row">
+                        <input type="text" id="orc-cep" placeholder="CEP" maxlength="9" required>
+                        <input type="text" id="orc-pais" placeholder="País" required>
+                    </div>
+                    <div class="orc-row">
+                        <input type="text" id="orc-estado" placeholder="Estado" required>
+                        <input type="text" id="orc-cidade" placeholder="Cidade" required>
+                    </div>
+                    <input type="text" id="orc-bairro" placeholder="Bairro" required>
+                    <input type="text" id="orc-rua" placeholder="Rua, número e complemento" required>
+                    <input type="email" id="orc-email" placeholder="E-mail" required>
+                    <input type="text" id="orc-visita" placeholder="Endereço da visita" required>
+                    <input type="tel" id="orc-telefone" placeholder="Contato telefônico" maxlength="15" required>
+                    
+                    <label class="orc-label-necessidade">Necessidade prévia:</label>
+                    <div class="orc-radio-group">
+                        <label><input type="radio" name="necessidade" value="Projeto Arquitetônico e/ou Interiores" required> Projeto Arquitetônico e/ou Interiores</label>
+                        <label><input type="radio" name="necessidade" value="Projetos Complementares"> Projetos Complementares</label>
+                        <label><input type="radio" name="necessidade" value="AVCB/CLCB"> AVCB/CLCB</label>
+                        <label><input type="radio" name="necessidade" value="Execução (Construção/Reforma)"> Execução (Construção/Reforma)</label>
+                        <label><input type="radio" name="necessidade" value="Outros"> Outros</label>
+                    </div>
+                    <input type="text" id="orc-outros-especifique" placeholder="Especifique qual serviço..." style="display: none;">
+                    
+                    <button type="submit" class="btn-enviar-orcamento">Enviar para WhatsApp <i class="fa-brands fa-whatsapp"></i></button>
+                </form>
+            </div>
+        </div>
 
     </main>
 
