@@ -177,7 +177,7 @@ body {
     max-width: 100%; 
     width: 700px;
     height: auto;
-    margin: 20px 0 30px 0;
+    margin: 20px 0 -100px 0;
     object-fit: contain;
 }
 
@@ -555,6 +555,221 @@ h2 {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); 
 }
 
+
+/* =========================================================
+   COLAR ESSE BLOCO NO FINAL DO SEU style.css
+   (antes do último comentário de fechamento, se houver)
+   ========================================================= */
+
+/* transition-delay dos cards — pode colar junto com os outros nth-child existentes */
+.depoimento-card:nth-child(1) { transition-delay: 0s; }
+.depoimento-card:nth-child(2) { transition-delay: 0.15s; }
+.depoimento-card:nth-child(3) { transition-delay: 0.3s; }
+
+/* =========================================
+   SEÇÃO DEPOIMENTOS — CARROSSEL RECOLHÍVEL
+   ========================================= */
+#depoimentos { background-color: #fff; }
+
+.dep-toggle-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.dep-toggle-titulo h2 { text-align: left; margin-bottom: 8px; }
+.dep-toggle-titulo p  { color: #666; font-size: 1rem; }
+
+.dep-toggle-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #708667;
+    color: #fff;
+    border: none;
+    padding: 12px 28px;
+    font-family: 'Arboria-Book', sans-serif;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border-radius: 2px;
+    white-space: nowrap;
+    transition: background 0.3s ease;
+    flex-shrink: 0;
+}
+
+.dep-toggle-btn:hover { background: #5c6d55; }
+
+.dep-toggle-btn i {
+    transition: transform 0.3s ease;
+}
+
+.dep-toggle-btn[aria-expanded="true"] i { transform: rotate(180deg); }
+
+.dep-conteudo {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+}
+
+.dep-conteudo.aberto { max-height: 900px; }
+
+.depoimentos-carousel {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    max-width: 900px;
+    margin: 40px auto 0;
+}
+
+.dep-track-wrapper {
+    flex: 1;
+    min-width: 0;
+}
+
+.dep-track {
+    display: flex;
+    gap: 20px;
+    align-items: stretch;
+    justify-content: center;
+}
+
+.depoimento-card {
+    display: none;
+    background: #f9f9f9;
+    border-radius: 10px;
+    padding: 35px 30px;
+    border: 1px solid #eee;
+    border-top: 4px solid #708667;
+    box-sizing: border-box;
+    width: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.depoimento-card.dep-ativo {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 calc(50% - 10px);
+    max-width: calc(50% - 10px);
+    animation: depFadeIn 0.35s ease;
+}
+
+.depoimento-card.dep-ativo:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+@media (max-width: 768px) {
+    .depoimento-card.dep-ativo {
+        max-width: 100%;
+        flex: 1 1 100%;
+    }
+}
+
+@keyframes depFadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.dep-seta {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+    background: #fff;
+    color: #708667;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.dep-seta:hover { background: #708667; color: #fff; }
+
+.dep-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.dep-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: none;
+    background: #ccc;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.dep-dot.ativo {
+    background: #708667;
+    transform: scale(1.3);
+}
+
+.depoimento-estrelas {
+    color: #708667;
+    font-size: 0.9rem;
+    margin-bottom: 18px;
+    letter-spacing: 3px;
+}
+
+.depoimento-texto {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.8;
+    font-style: italic;
+    margin-bottom: 25px;
+}
+
+.depoimento-autor {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.depoimento-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #708667;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #fff;
+    flex-shrink: 0;
+}
+
+.depoimento-info strong {
+    display: block;
+    color: #1a1a1a;
+    font-size: 0.95rem;
+    margin-bottom: 2px;
+}
+
+.depoimento-info span {
+    font-size: 0.78rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
 /* --- LIGHTBOX --- */
 .lightbox {
     display: none; 
@@ -781,7 +996,6 @@ footer ul {
 }
 
 .gif-dir { right: calc(50% - 900px); }
-
 /* =========================================
    PÁGINA DE GALERIA POR CLIENTES
    ========================================= */
@@ -1643,6 +1857,7 @@ footer ul {
     line-height: 1.8;
     font-style: italic;
     margin-bottom: 25px;
+    flex: 1;
 }
 
 .depoimento-autor {

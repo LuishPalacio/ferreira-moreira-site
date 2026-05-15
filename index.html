@@ -20,7 +20,7 @@
     <link rel="icon" type="image/png" sizes="192x192" href="img/favicon.png">
     <link rel="apple-touch-icon" href="img/favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=4">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#708667">
     <title>Ferreira & Moreira | Arquitetura e Engenharia</title>
@@ -220,7 +220,7 @@
                 </div>
                 <div class="numero-item reveal">
                     <div class="numero-wrapper">
-                        <span class="numero" data-target="5">0</span>
+                        <span class="numero" data-target="7">0</span>
                         <span class="numero-sufixo">+</span>
                     </div>
                     <span class="numero-label">Anos de Experiência</span>
@@ -326,7 +326,7 @@
         <section id="antes-depois" class="padding-padrao">
             <div class="container-texto reveal">
                 <h2>Do Conceito à Execução</h2>
-                <p>Arraste para ver a transformação — do projeto à obra entregue.</p>
+                <p>Arraste para ver a transformação, do projeto à obra entregue.</p>
             </div>
             <div class="antes-depois-wrapper reveal">
                 <img class="img-depois" src="img/execução-banheiroGFM.png" alt="Banheiro executado — Residencial GFM">
@@ -371,44 +371,104 @@
     </section>
 
         <section id="depoimentos" class="padding-padrao">
-            <div class="container-texto reveal">
-                <h2>O Que Nossos Clientes Dizem</h2>
-                <p>A satisfação de quem confiou em nós é a melhor prova do nosso trabalho.</p>
+            <div class="dep-toggle-header reveal">
+                <div class="dep-toggle-titulo">
+                    <h2>O Que Nossos Clientes Dizem</h2>
+                    <p>A satisfação de quem confiou em nós é a melhor prova do nosso trabalho.</p>
+                </div>
+                <button class="dep-toggle-btn" aria-expanded="false">
+                    Ver Depoimentos <i class="fa-solid fa-chevron-down"></i>
+                </button>
             </div>
-            <div class="depoimentos-container">
-                <div class="depoimento-card reveal">
-                    <div class="depoimento-estrelas">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="depoimento-texto">"A Ferreira & Moreira transformou completamente nossa casa. Do projeto à entrega, tivemos acompanhamento em cada detalhe. O resultado superou todas as nossas expectativas — funcional, bonito e dentro do orçamento."</p>
-                    <div class="depoimento-autor">
-                        <div class="depoimento-avatar">A</div>
-                        <div class="depoimento-info">
-                            <strong>Ana C.</strong>
-                            <span>Reforma Residencial · Santa Isabel, SP</span>
+
+            <div id="dep-conteudo" class="dep-conteudo">
+                <div class="depoimentos-carousel">
+                    <button class="dep-seta dep-prev" aria-label="Anterior"><i class="fa-solid fa-chevron-left"></i></button>
+                    
+                    <div class="dep-track-wrapper">
+                        <div class="dep-track">
+                            <div class="depoimento-card">
+                                <div class="depoimento-estrelas">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                                <p class="depoimento-texto">"A arquiteta Jessica e o engenheiro Denilson são extremamente atenciosos e nos 
+                                    trazem a leveza que precisamos para projetar os nossos sonhos. Eles não quiseram apenas fazer um projeto 
+                                    padrão, com a “marca registrada” (como muitos profissionais do mercado), mas idealizam o que transparece 
+                                    o jeitinho de ser de cada um da família, trazendo a sensação de coração quentinho. Ninguém há de se 
+                                    arrepender ao contratar os serviços deles!"</p>
+                                <div class="depoimento-autor">
+                                    <div class="depoimento-avatar">A</div>
+                                    <div class="depoimento-info">
+                                        <strong>Thayná M.</strong>
+                                        <span>Reforma Residencial · Santa Isabel, SP</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="depoimento-card">
+                                <div class="depoimento-estrelas">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                                <p class="depoimento-texto">"Gostaria de elogiar os serviços de arquitetura e engenharia! 
+                                    Vocês são verdadeiros mestres na criação de projetos inovadores e funcionais. 
+                                    A maneira como vocês combinam criatividade, estética e funcionalidade é simplesmente impressionante.
+                                    Além disso, a atenção aos detalhes e a habilidade de transformar ideias em realidade são admiráveis. 
+                                    Parabéns pelo excelente trabalho! Vocês são verdadeiros profissionais e merecem todo o reconhecimento 
+                                    pelo talento e dedicação que demonstram em cada projeto."
+                                </p>
+                                <div class="depoimento-autor">
+                                    <div class="depoimento-avatar">R</div>
+                                    <div class="depoimento-info">
+                                        <strong>Jane O.</strong>
+                                        <span>Reforma Comercial · Santa Isabel, SP</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="depoimento-card">
+                                <div class="depoimento-estrelas">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                                <p class="depoimento-texto">"Desde o projeto até a execução foi tudo perfeito, muita atenção ao cliente, 
+                                um projeto bem personalizado atento aos nossos desejos. Comunicação muito fácil, bastante profissional!!! 
+                                Fiquei muito satisfeito, recomendo!"
+                                </p>
+                                <div class="depoimento-autor">
+                                    <div class="depoimento-avatar">F</div>
+                                    <div class="depoimento-info">
+                                        <strong>José O.</strong>
+                                        <span>Reforma Residencial · Santa Isabel, SP</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                                <div class="depoimento-card">
+                                <div class="depoimento-estrelas">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                                <p class="depoimento-texto">"Serviço excepcional! A equipe é extremamente profissional 
+                                e criativa nos projetos. Desde o design inicial até a execução, eles superaram todas expectativas. 
+                                Recomendo fortemente seus serviços para qualquer projeto de Engenharia e Arquitetura!"
+                                </p>
+                                <div class="depoimento-autor">
+                                    <div class="depoimento-avatar">R</div>
+                                    <div class="depoimento-info">
+                                        <strong>Adriano N.</strong>
+                                        <span>Projeto Residencial · São Paulo, SP</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                                <div class="depoimento-card">
+                                <div class="depoimento-estrelas">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                                <p class="depoimento-texto">"Profissionais super criativos e responsáveis ! - 
+                                Executou diversos trabalhos em Guarulhos e região mas quando preciso de um profissional 
+                                para fazer um projeto ou inspeção técnica de obra sempre chamo a Ferreira & Moreira !"
+                                </p>
+                                <div class="depoimento-autor">
+                                    <div class="depoimento-avatar">R</div>
+                                    <div class="depoimento-info">
+                                        <strong>Willian S.</strong>
+                                        <span>Parceiro Profissional · São Paulo, SP</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
+                    <button class="dep-seta dep-next" aria-label="Próximo"><i class="fa-solid fa-chevron-right"></i></button>
                 </div>
-                <div class="depoimento-card reveal">
-                    <div class="depoimento-estrelas">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="depoimento-texto">"Profissionais excepcionais. A integração entre arquitetura e engenharia fez toda a diferença — o projeto foi executado exatamente como planejado, sem imprevistos e no prazo combinado."</p>
-                    <div class="depoimento-autor">
-                        <div class="depoimento-avatar">R</div>
-                        <div class="depoimento-info">
-                            <strong>Roberto M.</strong>
-                            <span>Projeto Arquitetônico · São Paulo, SP</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="depoimento-card reveal">
-                    <div class="depoimento-estrelas">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-                    <p class="depoimento-texto">"Contratamos para regularizar o imóvel e acabamos redesenhando tudo. A equipe tem visão, competência técnica e, acima de tudo, cuidado genuíno com o cliente. Recomendo sem hesitar."</p>
-                    <div class="depoimento-autor">
-                        <div class="depoimento-avatar">F</div>
-                        <div class="depoimento-info">
-                            <strong>Fernanda L.</strong>
-                            <span>Regularização + Interiores · Guararema, SP</span>
-                        </div>
-                    </div>
-                </div>
+                <div class="dep-dots"></div>
             </div>
         </section>
 

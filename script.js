@@ -389,4 +389,76 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
+
+    // ==========================================
+    // DEPOIMENTOS — TOGGLE + NAVEGAÇÃO
+    // ==========================================
+    const depToggleBtn = document.querySelector('.dep-toggle-btn');
+    const depConteudo  = document.getElementById('dep-conteudo');
+    const depTrack     = document.querySelector('.dep-track');
+    const depDotsEl    = document.querySelector('.dep-dots');
+
+    let depAtual = 0;
+    const depCards = depTrack ? Array.from(depTrack.querySelectorAll('.depoimento-card')) : [];
+
+    function getCardsPorPagina() {
+        return window.innerWidth > 768 ? 2 : 1;
+    }
+
+    function irParaDep(index) {
+        if (!depCards.length) return;
+        const cardsPorPagina = getCardsPorPagina();
+        const numPaginas = Math.ceil(depCards.length / cardsPorPagina);
+
+        depAtual = (index + numPaginas) % numPaginas;
+
+        const startIndex = depAtual * cardsPorPagina;
+        const endIndex = startIndex + cardsPorPagina;
+
+        depCards.forEach((card, i) => {
+            const isAtivo = i >= startIndex && i < endIndex;
+            card.classList.toggle('dep-ativo', isAtivo);
+        });
+
+        if (depDotsEl) {
+            depDotsEl.querySelectorAll('.dep-dot').forEach((d, i) => d.classList.toggle('ativo', i === depAtual));
+        }
+    }
+
+    if (depTrack && depDotsEl) {
+        const atualizarDots = () => {
+            depDotsEl.innerHTML = '';
+            const numPaginas = Math.ceil(depCards.length / getCardsPorPagina());
+            for (let i = 0; i < numPaginas; i++) {
+                const dot = document.createElement('button');
+                dot.className = 'dep-dot' + (i === depAtual ? ' ativo' : '');
+                dot.setAttribute('aria-label', 'Depoimentos página ' + (i + 1));
+                dot.addEventListener('click', () => irParaDep(i));
+                depDotsEl.appendChild(dot);
+            }
+        };
+
+        atualizarDots();
+
+        window.addEventListener('resize', () => {
+            const numPaginasAtuais = Math.ceil(depCards.length / getCardsPorPagina());
+            if (depDotsEl.children.length !== numPaginasAtuais) {
+                depAtual = 0;
+                atualizarDots();
+                irParaDep(0);
+            }
+        });
+
+        document.querySelector('.dep-prev')?.addEventListener('click', () => irParaDep(depAtual - 1));
+        document.querySelector('.dep-next')?.addEventListener('click', () => irParaDep(depAtual + 1));
+
+        irParaDep(0);
+    }
+
+    if (depToggleBtn && depConteudo) {
+        depToggleBtn.addEventListener('click', () => {
+            const aberto = depConteudo.classList.toggle('aberto');
+            depToggleBtn.setAttribute('aria-expanded', aberto);
+        });
+    }
 });
