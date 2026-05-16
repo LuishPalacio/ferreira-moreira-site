@@ -198,8 +198,12 @@ document.addEventListener('DOMContentLoaded', function() {
             modalClose.addEventListener('click', () => modalProcesso.classList.remove('ativo'));
         }
 
-        modalProcesso.addEventListener('click', (e) => {
-            if (e.target === modalProcesso) {
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') modalProcesso.classList.remove('ativo');
+        });
+        document.addEventListener('click', (e) => {
+            if (!modalProcesso.classList.contains('ativo')) return;
+            if (!e.target.closest('.janela-processo-content') && !e.target.closest('.fase-icone')) {
                 modalProcesso.classList.remove('ativo');
             }
         });

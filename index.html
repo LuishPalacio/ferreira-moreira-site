@@ -13,9 +13,6 @@
     <meta property="og:description" content="Da concepção à entrega das chaves: projetos arquitetônicos, gerenciamento de obras, laudos técnicos e regularização de imóveis em São Paulo.">
     <meta property="og:image" content="https://fmarqeng.com.br/img/banner1.jpeg">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" sizes="32x32" href="img/favicon.png">
     <link rel="icon" type="image/png" sizes="192x192" href="img/favicon.png">
     <link rel="apple-touch-icon" href="img/favicon.png">
@@ -70,7 +67,9 @@
                 <li><a href="#home">Início</a></li>
                 <li><a href="#sobre">Quem Somos</a></li>
                 <li><a href="#servicos">Serviços</a></li>
-                <li><a href="galeria.html">Projetos</a></li> 
+                <li><a href="#processo">Como Trabalhamos</a></li>
+                <li><a href="#depoimentos">Depoimentos</a></li>
+                <li><a href="galeria.html">Projetos</a></li>
                 <li><a href="https://wa.me/5511991430703" target="_blank" rel="noopener noreferrer" class="btn-contato">Fale Conosco</a></li>
             </ul>
         </nav>
@@ -99,7 +98,7 @@
     <div class="sobre-wrapper">
         
         <div class="sobre-imagem esquerda">
-            <img src="img/imagem-esquerda.png" alt="Sócio 1 ou Detalhe">
+            <img src="img/imagem-esquerda.png" alt="Sócio 1 ou Detalhe" loading="lazy">
         </div>
 
         <div class="sobre-texto">
@@ -110,7 +109,7 @@
         </div>
 
         <div class="sobre-imagem direita">
-            <img src="img/imagem-direita.png" alt="Sócio 2 ou Detalhe">
+            <img src="img/imagem-direita.png" alt="Sócio 2 ou Detalhe" loading="lazy">
         </div>
 
     </div>
@@ -163,7 +162,7 @@
 
     </div>
 </section>
-        <section id="processo" class="padding-padrao">
+        <section id="processo">
             <div class="container-texto reveal">
                 <h2>Do sonho à entrega: conheça o nosso processo</h2>
             </div>
@@ -363,12 +362,12 @@
                     <h2>O Que Nossos Clientes Dizem</h2>
                     <p>A satisfação de quem confiou em nós é a melhor prova do nosso trabalho.</p>
                 </div>
-                <button class="dep-toggle-btn" aria-expanded="false">
+                <button class="dep-toggle-btn" aria-expanded="true">
                     Ver Depoimentos <i class="fa-solid fa-chevron-down"></i>
                 </button>
             </div>
 
-            <div id="dep-conteudo" class="dep-conteudo">
+            <div id="dep-conteudo" class="dep-conteudo aberto">
                 <div class="depoimentos-carousel">
                     <button class="dep-seta dep-prev" aria-label="Anterior"><i class="fa-solid fa-chevron-left"></i></button>
                     
@@ -502,7 +501,7 @@
         <div id="modal-orcamento" class="modal-processo">
             <div class="modal-processo-content modal-orcamento-content">
                 <span class="modal-orcamento-close">&times;</span>
-                <h3 id="modal-processo-title">Solicitar Orçamento</h3>
+                <h3>Solicitar Orçamento</h3>
                 <form id="form-orcamento">
                     <input type="text" id="orc-nome" placeholder="Nome completo" required>
                     <div class="orc-row">
@@ -558,7 +557,7 @@
                 <li><a href="#home">Início</a></li>
                 <li><a href="#sobre">Quem Somos</a></li>
                 <li><a href="#servicos">Soluções</a></li>
-                <li><a href="galeria.html">Portfólio</a></li>
+                <li><a href="galeria.html">Projetos</a></li>
             </ul>
         </div>
 
