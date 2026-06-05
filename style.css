@@ -2226,10 +2226,13 @@ footer ul {
 .parceiro-item {
     flex: 0 0 calc(25% - 22.5px);
     max-width: calc(25% - 22.5px);
+    flex: 0 0 calc(33.333% - 20px);
+    max-width: calc(33.333% - 20px);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 110px;
+    height: 150px;
     background: #f9f9f9;
     border: 1px solid #eee;
     border-radius: 8px;
@@ -2396,6 +2399,15 @@ footer ul {
 @media (max-width: 768px) {
     .numeros-container { gap: 10px; }
     .numero { font-size: 2.8rem; }
+    .numeros-container { 
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px 10px; 
+    }
+    .numero-item { padding: 0; }
+    .numero { font-size: 2.4rem; }
+    .numero-sufixo { font-size: 1.4rem; padding-bottom: 5px; }
+    .numero-label { font-size: 0.75rem; letter-spacing: 1px; }
 
     .proc-arco-container { width: 95%; }
     .fase-icone { width: 65px; height: 65px; }
