@@ -327,7 +327,8 @@ document.addEventListener('DOMContentLoaded', function() {
         let isDown = false;
         let startX;
         let scrollLeft;
-        let roletaInterval;
+        let roletaAnimationId;
+        let touchTimeoutId;
 
         const imagensRoleta = roleta.querySelectorAll('img');
         imagensRoleta.forEach(img => {
@@ -340,31 +341,40 @@ document.addEventListener('DOMContentLoaded', function() {
             roleta.appendChild(clone);
         });
 
+        function rolar() {
+            roleta.scrollLeft += 1; 
+            if (roleta.scrollLeft >= roleta.scrollWidth / 2) {
+                roleta.scrollLeft = 0;
+            }
+            roletaAnimationId = requestAnimationFrame(rolar);
+        }
+
         function startRoleta() {
             stopRoleta(); 
-            roletaInterval = setInterval(() => {
-                roleta.scrollLeft += 1.5; 
-                if (roleta.scrollLeft >= roleta.scrollWidth / 2) {
-                    roleta.scrollLeft = 0;
-                }
-            }, 20); 
+            roletaAnimationId = requestAnimationFrame(rolar);
         }
 
         function stopRoleta() {
-            clearInterval(roletaInterval);
+            cancelAnimationFrame(roletaAnimationId);
         }
 
         startRoleta();
 
         roleta.addEventListener('mouseenter', stopRoleta);
-        roleta.addEventListener('touchstart', stopRoleta, { passive: true });
+        roleta.addEventListener('touchstart', () => {
+            clearTimeout(touchTimeoutId);
+            stopRoleta();
+        }, { passive: true });
 
         roleta.addEventListener('mouseleave', () => {
             isDown = false;
             roleta.style.cursor = 'grab';
             startRoleta();
         });
-        roleta.addEventListener('touchend', startRoleta);
+        roleta.addEventListener('touchend', () => {
+            clearTimeout(touchTimeoutId);
+            touchTimeoutId = setTimeout(startRoleta, 1000);
+        });
 
         roleta.addEventListener('mousedown', (e) => {
             isDown = true;
@@ -697,24 +707,117 @@ document.addEventListener('DOMContentLoaded', function() {
     const parceirosNext = document.querySelector('.parceiros-next');
 
     if (parceirosCarousel && parceirosPrev && parceirosNext) {
-        function scrollParceiros(direction) {
+        const parceirosTrack = parceirosCarousel.querySelector('.parceiros-track');
+        
+        let isDownParceiros = false;
+        let startXParceiros;
+        let scrollLeftParceiros;
+        let parceirosAnimationId;
+        let parceirosTouchTimeoutId;
+
+        // Clona os parceiros para o loop infinito
+        const parceirosItens = Array.from(parceirosTrack.children);
+        parceirosItens.forEach(item => {
+            const clone = item.cloneNode(true);
+            parceirosTrack.appendChild(clone);
+        });
+
+        // Bloqueia o comportamento padrão de arrastar as imagens (bug visual)
+        parceirosCarousel.querySelectorAll('img').forEach(img => {
+            img.addEventListener('dragstart', (e) => e.preventDefault());
+        });
+
+        function rolarParceiros() {
+            parceirosCarousel.scrollLeft += 1;
+            if (parceirosCarousel.scrollLeft >= parceirosCarousel.scrollWidth / 2) {
+                parceirosCarousel.scrollLeft = 0;
+            }
+            parceirosAnimationId = requestAnimationFrame(rolarParceiros);
+        }
+
+        function startParceiros() {
+            stopParceiros();
+            parceirosAnimationId = requestAnimationFrame(rolarParceiros);
+        }
+
+        function stopParceiros() {
+            cancelAnimationFrame(parceirosAnimationId);
+        }
+
+        startParceiros();
+
+        parceirosCarousel.addEventListener('mouseenter', stopParceiros);
+        parceirosCarousel.addEventListener('touchstart', () => {
+            clearTimeout(parceirosTouchTimeoutId);
+            stopParceiros();
+        }, { passive: true });
+
+        parceirosCarousel.addEventListener('mouseleave', () => {
+            isDownParceiros = false;
+            parceirosCarousel.style.cursor = 'grab';
+            startParceiros();
+        });
+
+        parceirosCarousel.addEventListener('touchend', () => {
+            clearTimeout(parceirosTouchTimeoutId);
+            parceirosTouchTimeoutId = setTimeout(startParceiros, 1000);
+        });
+
+        parceirosCarousel.addEventListener('mousedown', (e) => {
+            isDownParceiros = true;
+            parceirosCarousel.style.cursor = 'grabbing';
+            startXParceiros = e.pageX - parceirosCarousel.offsetLeft;
+            scrollLeftParceiros = parceirosCarousel.scrollLeft;
+            stopParceiros();
+        });
+
+        parceirosCarousel.addEventListener('mouseup', () => {
+            isDownParceiros = false;
+            parceirosCarousel.style.cursor = 'grab';
+            startParceiros();
+        });
+
+        parceirosCarousel.addEventListener('mousemove', (e) => {
+            if (!isDownParceiros) return;
+            e.preventDefault();
+            const x = e.pageX - parceirosCarousel.offsetLeft;
+            const walk = (x - startXParceiros) * 2;
+            parceirosCarousel.scrollLeft = scrollLeftParceiros - walk;
+        });
+
+        // Funções para os botões manuais (mantendo um salto suave)
+        function scrollParceirosManual(direction) {
             const item = parceirosCarousel.querySelector('.parceiro-item');
             if (!item) return;
             
             const track = parceirosCarousel.querySelector('.parceiros-track');
             const gap = parseInt(window.getComputedStyle(track).gap) || 0;
             
-            // Deslocamento é a largura de 1 item + o espaço (gap)
             const scrollStep = item.offsetWidth + gap;
 
+            // Aplica rolagem suave temporária apenas para os botões
+            parceirosCarousel.style.scrollBehavior = 'smooth';
             if (direction === 'next') {
-                parceirosCarousel.scrollBy({ left: scrollStep, behavior: 'smooth' });
+                parceirosCarousel.scrollBy({ left: scrollStep });
             } else {
-                parceirosCarousel.scrollBy({ left: -scrollStep, behavior: 'smooth' });
+                parceirosCarousel.scrollBy({ left: -scrollStep });
             }
+            
+            setTimeout(() => { parceirosCarousel.style.scrollBehavior = 'auto'; }, 400);
         }
 
-        parceirosNext.addEventListener('click', () => scrollParceiros('next'));
-        parceirosPrev.addEventListener('click', () => scrollParceiros('prev'));
+        parceirosNext.addEventListener('click', () => {
+            stopParceiros();
+            scrollParceirosManual('next');
+            clearTimeout(parceirosTouchTimeoutId);
+            parceirosTouchTimeoutId = setTimeout(startParceiros, 1500);
+        });
+
+        parceirosPrev.addEventListener('click', () => {
+            stopParceiros();
+            scrollParceirosManual('prev');
+            clearTimeout(parceirosTouchTimeoutId);
+            parceirosTouchTimeoutId = setTimeout(startParceiros, 1500);
+        });
     }
 });

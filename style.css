@@ -1263,7 +1263,7 @@ footer ul {
         display: flex !important;
         position: absolute;
         top: 100%; 
-        right: 5%; 
+        right: 20px; 
         left: auto; 
         width: auto; 
         min-width: 220px; 
@@ -1271,7 +1271,7 @@ footer ul {
         background-color: rgba(18, 18, 18, 0.95); 
         backdrop-filter: blur(10px); 
         flex-direction: column;
-        align-items: center; 
+        align-items: flex-start; 
         padding: 25px 30px; 
         gap: 20px; 
         z-index: 990;
@@ -1283,13 +1283,37 @@ footer ul {
         visibility: hidden;
         transform: translateY(-10px);
         transition: all 0.3s ease;
+        transform: translateY(-15px) scale(0.95);
+        transform-origin: top right;
+        transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s ease;
     }
 
     .menu.ativo {
         opacity: 1;
         visibility: visible;
         transform: translateY(10px); 
+        transform: translateY(10px) scale(1); 
     }
+
+    .menu li {
+        width: 100%;
+        opacity: 0;
+        transform: translateY(15px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+
+    .menu.ativo li {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .menu.ativo li:nth-child(1) { transition-delay: 0.1s; }
+    .menu.ativo li:nth-child(2) { transition-delay: 0.15s; }
+    .menu.ativo li:nth-child(3) { transition-delay: 0.2s; }
+    .menu.ativo li:nth-child(4) { transition-delay: 0.25s; }
+    .menu.ativo li:nth-child(5) { transition-delay: 0.3s; }
+    .menu.ativo li:nth-child(6) { transition-delay: 0.35s; }
+    .menu.ativo li:nth-child(7) { transition-delay: 0.4s; }
+    .menu.ativo li:nth-child(8) { transition-delay: 0.45s; }
 
     .menu a {
         font-size: 0.95rem; 
@@ -1299,6 +1323,7 @@ footer ul {
         text-transform: uppercase;
         position: relative;
         text-decoration: none !important;
+        display: block;
     }
 
     .menu a:hover { color: #708667; }
@@ -1311,6 +1336,8 @@ footer ul {
         background: transparent;
         color: #708667 !important;
         font-size: 0.9rem;
+        display: block;
+        text-align: left;
     }
 
     .menu .btn-contato:hover {
@@ -1344,6 +1371,10 @@ footer ul {
         text-align: center !important;
         margin: 0 auto 30px auto !important;
         font-size: 1rem !important;
+        font-size: 1.05rem !important;
+        line-height: 1.5 !important;
+        padding: 0 10px !important;
+        word-break: break-word !important;
     }
 
     .cta-button {
@@ -1351,6 +1382,9 @@ footer ul {
         display: block !important;
         width: fit-content !important;
         float: none !important;
+        white-space: nowrap !important;
+        padding: 12px 28px !important;
+        font-size: 0.9rem !important;
     }
 
     .sobre-wrapper {
@@ -2173,10 +2207,9 @@ footer ul {
 .parceiros-carousel {
     overflow-x: auto;
     flex: 1;
-    scroll-behavior: smooth;
     scrollbar-width: none; /* Oculta a scrollbar no Firefox */
     -ms-overflow-style: none; /* Oculta no IE/Edge */
-    scroll-snap-type: x mandatory;
+    cursor: grab;
 }
 
 .parceiros-carousel::-webkit-scrollbar {
@@ -2193,7 +2226,6 @@ footer ul {
 .parceiro-item {
     flex: 0 0 calc(25% - 22.5px);
     max-width: calc(25% - 22.5px);
-    scroll-snap-align: start;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -2204,6 +2236,7 @@ footer ul {
     padding: 20px;
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     text-decoration: none;
+    user-select: none;
 }
 
 .parceiro-item:hover {
