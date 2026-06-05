@@ -688,4 +688,33 @@ document.addEventListener('DOMContentLoaded', function() {
             inputOutros.style.display = 'none';
         });
     }
+
+    // ==========================================
+    // 12. CARROSSEL DE PARCEIROS
+    // ==========================================
+    const parceirosCarousel = document.querySelector('.parceiros-carousel');
+    const parceirosPrev = document.querySelector('.parceiros-prev');
+    const parceirosNext = document.querySelector('.parceiros-next');
+
+    if (parceirosCarousel && parceirosPrev && parceirosNext) {
+        function scrollParceiros(direction) {
+            const item = parceirosCarousel.querySelector('.parceiro-item');
+            if (!item) return;
+            
+            const track = parceirosCarousel.querySelector('.parceiros-track');
+            const gap = parseInt(window.getComputedStyle(track).gap) || 0;
+            
+            // Deslocamento é a largura de 1 item + o espaço (gap)
+            const scrollStep = item.offsetWidth + gap;
+
+            if (direction === 'next') {
+                parceirosCarousel.scrollBy({ left: scrollStep, behavior: 'smooth' });
+            } else {
+                parceirosCarousel.scrollBy({ left: -scrollStep, behavior: 'smooth' });
+            }
+        }
+
+        parceirosNext.addEventListener('click', () => scrollParceiros('next'));
+        parceirosPrev.addEventListener('click', () => scrollParceiros('prev'));
+    }
 });
