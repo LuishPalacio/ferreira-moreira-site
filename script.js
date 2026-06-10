@@ -608,6 +608,13 @@ document.addEventListener('DOMContentLoaded', function() {
         const inputTelefone = document.getElementById('orc-telefone');
         const inputCep = document.getElementById('orc-cep');
 
+        function resetarCampoOutros() {
+            if (!inputOutros) return;
+            inputOutros.style.display = 'none';
+            inputOutros.required = false;
+            inputOutros.value = '';
+        }
+
         if (inputTelefone) {
             inputTelefone.addEventListener('input', function (e) {
                 let x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
@@ -695,7 +702,7 @@ document.addEventListener('DOMContentLoaded', function() {
             window.open(`https://wa.me/5511991430703?text=${encodeURIComponent(msg)}`, '_blank');
             modalOrcamento.classList.remove('ativo');
             formOrcamento.reset();
-            inputOutros.style.display = 'none';
+            resetarCampoOutros();
         });
     }
 

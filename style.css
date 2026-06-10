@@ -2192,14 +2192,15 @@ footer ul {
 /* =========================================
    SEÇÃO PARCEIROS
    ========================================= */
-#parceiros { background-color: #f4f4f4; }
+#parceiros {
+    background: linear-gradient(180deg, #f8f9f5 0%, #eef3eb 100%);
+}
 
 .parceiros-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 20px;
-    max-width: 1000px;
     max-width: 1300px;
     margin: 40px auto 0;
     position: relative;
@@ -2212,6 +2213,8 @@ footer ul {
     scrollbar-width: none; /* Oculta a scrollbar no Firefox */
     -ms-overflow-style: none; /* Oculta no IE/Edge */
     cursor: grab;
+    mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
 }
 
 .parceiros-carousel::-webkit-scrollbar {
@@ -2222,25 +2225,21 @@ footer ul {
     display: flex;
     gap: 30px;
     align-items: center;
-    padding: 15px 5px; /* Para as sombras não cortarem */
     padding: 20px 5px; /* Para as sombras não cortarem */
 }
 
 .parceiro-item {
-    flex: 0 0 calc(25% - 22.5px);
-    max-width: calc(25% - 22.5px);
     flex: 0 0 calc(33.333% - 20px);
     max-width: calc(33.333% - 20px);
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 110px;
     height: 150px;
-    height: 200px;
-    background: #fff;
-    border: 1px solid #eee;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(112, 134, 103, 0.18);
     border-radius: 8px;
-    padding: 20px;
+    padding: 24px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     text-decoration: none;
     user-select: none;
@@ -2248,8 +2247,8 @@ footer ul {
 
 .parceiro-item:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
-    border-color: #708667;
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.08);
+    border-color: rgba(112, 134, 103, 0.55);
 }
 
 .parceiro-item img {
@@ -2257,7 +2256,7 @@ footer ul {
     max-height: 100%;
     object-fit: contain;
     filter: grayscale(100%);
-    opacity: 0.6;
+    opacity: 0.75;
     transition: all 0.3s ease;
 }
 
@@ -2271,26 +2270,21 @@ footer ul {
     width: 44px;
     height: 44px;
     border-radius: 50%;
-    border: 1px solid #ddd;
     background: #fff;
     color: #708667;
-    border: 1px solid #708667;
-    background: #708667;
-    color: #fff;
+    border: 1px solid rgba(112, 134, 103, 0.45);
     font-size: 1rem;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background 0.3s ease, color 0.3s ease;
     transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
 .parceiros-seta:hover {
     background: #708667;
-    background: #5c6d55;
-    border-color: #5c6d55;
+    border-color: #708667;
     color: #fff;
 }
 
