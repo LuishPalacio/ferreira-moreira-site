@@ -1361,10 +1361,10 @@ footer ul {
     }
 
     .hero-logo-destaque {
-        width: 100% !important;
+        width: 130% !important;
         max-width: 550px !important;
         height: auto !important;
-        margin: 20px 0 30px 0 !important;
+        margin: 20px 0 0 -55px !important;
     }
 
     .hero p {
