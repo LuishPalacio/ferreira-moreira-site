@@ -148,10 +148,10 @@ body {
     animation: fadeSlideshow 20s infinite; 
 }
 
-.slide1 { background-image: url('img/banner1.jpeg'); animation-delay: 0s; }
-.slide2 { background-image: url('img/banner2.jpeg'); animation-delay: 5s; }
-.slide3 { background-image: url('img/banner3.jpeg'); animation-delay: 10s; }
-.slide4 { background-image: url('img/banner4.jpeg'); animation-delay: 15s; }
+.slide1 { background-image: url('img/banner1.webp'); animation-delay: 0s; }
+.slide2 { background-image: url('img/banner2.webp'); animation-delay: 5s; }
+.slide3 { background-image: url('img/banner3.webp'); animation-delay: 10s; }
+.slide4 { background-image: url('img/banner4.webp'); animation-delay: 15s; }
 
 @keyframes fadeSlideshow {
     0% { opacity: 0; transform: scale(1); }
@@ -1692,7 +1692,7 @@ footer ul {
    SEÇÃO TIMELINE DO PROCESSO
    ========================================= */
 #processo {
-    background: url('img/metodologia.png') no-repeat center bottom;
+    background: url('img/metodologia.webp') no-repeat center bottom;
     background-size: cover;
     position: relative;
     color: #e0e0e0;
